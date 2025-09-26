@@ -40,7 +40,7 @@ function onFetchAnalogs(ids: string[]) {
     <ErrorMessage
       v-if="compoundPropertiesError || !currentId"
       :cas="currentId"
-      class="col-span-1 md:col-span-12 h-24 w-1/2 mx-auto"
+      class="col-span-1 md:col-span-12 h-24 w-full md:w-1/2 mx-auto"
     />
     <template v-else>
       <div class="d-flex col-span-1 md:col-span-3">

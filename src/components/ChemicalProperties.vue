@@ -37,8 +37,8 @@ defineProps<Props>();
         <span>{{ data.molecularWeight }}</span>
       </div>
       <div class="flex flex-col">
-        <span class="text-sm text-gray-600 break-all">SMILES</span>
-        <span>{{ data.smiles }}</span>
+        <span class="text-sm text-gray-600">SMILES</span>
+        <span class="break-all">{{ data.smiles }}</span>
       </div>
     </CardContent>
   </Card>

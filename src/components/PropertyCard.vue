@@ -47,7 +47,7 @@ function onAnalogsButtonClick() {
     </CardHeader>
     <CardContent>
       <Tabs default-value="summary" class="">
-        <TabsList>
+        <TabsList class="h-auto flex-wrap">
           <TabsTrigger v-if="data.summary" value="summary"> Summary </TabsTrigger>
           <TabsTrigger v-if="data.modelDescriptors" value="model-descriptors">
             Model Descriptors
@@ -132,7 +132,7 @@ function onAnalogsButtonClick() {
 
         <TabsContent value="aim-analog">
           <template v-if="data.aimAnalogs.length">
-            <div class="flex gap-4 p-4">
+            <div class="flex flex-col md:flex-row gap-2 md:gap-4 p-4">
               <Button
                 v-if="!isAllAnalogsFetched"
                 :disabled="isAnalogsLoading"
@@ -143,7 +143,7 @@ function onAnalogsButtonClick() {
                 v-for="([, analog], i) in analogs"
                 :key="i"
                 :data="analog"
-                class="m-w-1/2"
+                class="max-w-full md:max-w-1/3"
               />
             </div>
           </template>

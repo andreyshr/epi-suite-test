@@ -5,7 +5,7 @@ import type {
 import { chemicalPropertiesMapper } from './chemical-properties-mapper';
 import { logKowMapper } from './logkow-mapper';
 import { mpbpMapper } from './mpbp-mapper';
-import { biohcwinMapper } from './bioHCwin-mapper';
+import { biohcwinMapper } from './biohcwin-mapper';
 
 export function fromDto(dto: CompoundPropertiesDto): CompoundProperties {
   return {

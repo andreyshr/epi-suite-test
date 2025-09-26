@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch } from 'vue';
+import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -18,12 +18,13 @@ const {
   compoundPropertiesError,
 } = storeToRefs(compoundPropertiesStore);
 
+const currentId = computed(() => route.query.cas);
+
 watch(
-  () => route.query.cas,
-  () => {
-    const cas = route.query.cas;
-    if (!cas) return;
-    compoundPropertiesStore.fetchCompoundProperties(cas as string);
+  () => currentId.value,
+  (newId, oldId) => {
+    if (typeof newId !== 'string' || newId === oldId) return;
+    compoundPropertiesStore.fetchCompoundProperties(newId);
   },
 );
 
@@ -37,8 +38,8 @@ function onFetchAnalogs(ids: string[]) {
     class="grid grid-cols-1 md:grid-cols-12 gap-y-4 md:gap-y-0 md:gap-4 w-full max-w-7xl m-auto min-h-dvh py-8 px-2"
   >
     <ErrorMessage
-      v-if="compoundPropertiesError"
-      :cas="route.query.cas?.toString()"
+      v-if="compoundPropertiesError || !currentId"
+      :cas="currentId"
       class="col-span-1 md:col-span-12 h-24 w-1/2 mx-auto"
     />
     <template v-else>
